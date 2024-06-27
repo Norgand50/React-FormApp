@@ -3,16 +3,35 @@ import CustomerIndex from './CustomerIndex';
 import CustomerForm from './CustomerForm';
 import FormNavigator from '../Controllers/FormNavigator';
 import {CustomersMetadata} from './CustomersMetadata.js';
+import axios from 'axios';
+import Alert from 'react-bootstrap/Alert';
 
 
 export default function CustomerContainer(){
     const [activeForm, setActiveForm] = useState(0);
     const [customers, setCustomers] = useState([]);
     const [selectedCustomer, setSelectedCustomer] = useState({});
+    const [showAlert, setShowAlert] = useState(false);
+    const [errorMsg, setErrorMessage] = useState('');
 
     useEffect(() => {
-        setCustomers(CustomersMetadata());
+       // setCustomers(CustomersMetadata());
+       LoadDataFromServer();
     },[]);
+
+
+    function LoadDataFromServer(){
+        axios.get('https://localhost:7186/api/Customers')
+        .then(response => {
+            const responseData = response.data;
+            setCustomers(responseData);
+        })
+        .catch(error => {
+            console.log(error);
+            setErrorMessage(error.message);
+            setShowAlert(true);
+        });
+    }
 
     function handleEdit({target}){
         const id = Number(target.getAttribute("value"));
@@ -53,9 +72,25 @@ export default function CustomerContainer(){
         }
 
     }
+
+
+
+
+    let alert;
+    if(showAlert){
+        alert = (<Alert variant="danger" onClose={() => {setShowAlert(false); setErrorMessage('');}} dismissible>
+        <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+        <p>
+          {errorMsg}
+        </p>
+      </Alert>);
+    }
+     
     return (<>
         <FormNavigator handlePage={handlePage}/>
+        { alert }
         {activeForm === 0 ? <CustomerIndex customers={customers} handleEdit={handleEdit} handleDelete={handleDelete}/> : <CustomerForm selectedCustomer={selectedCustomer} sendDataToParent={handleData}/>}
+
         </>);
 
     

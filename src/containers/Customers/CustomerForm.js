@@ -10,24 +10,36 @@ export default function CustomerForm({selectedCustomer, sendDataToParent}){
   const [customer, setCustomer] = useState({
     id: 0, 
     code: "", 
-    name: "",
-    surname:  "",
+    first_name: "",
+    last_name:  "",
+    company_name: "",
+    address: "",
+    city: "",
+    county: "",
+    state: "",
+    web: "",
     email:  "",
-    telephone:  "",
-    mobile:  "",
-    balance:  0,
+    phone1:  "",
+    phone2:  "",
+    zip:  0,
     active:  true});
 
 useEffect(() =>{
 
   setCustomer(prev => ({...prev, id: selectedCustomer.id || 0, 
     code: selectedCustomer.code || "", 
-    name: selectedCustomer.name || "",
-    surname: selectedCustomer.surname || "",
+    first_name: selectedCustomer.first_name || "",
+    last_name: selectedCustomer.last_name || "",
+    company_name: selectedCustomer.company_name || "",
+    address: selectedCustomer.address || "",
+    city: selectedCustomer.city || "",
+    county: selectedCustomer.county || "",
+    state: selectedCustomer.state || "",
+    web: selectedCustomer.web || "",
     email: selectedCustomer.email || "",
-    telephone: selectedCustomer.telephone || "",
-    mobile: selectedCustomer.mobile || "",
-    balance: selectedCustomer.balance || 0,
+    phone1: selectedCustomer.phone1 || "",
+    phone2: selectedCustomer.phone2 || "",
+    zip: selectedCustomer.zip || 0,
     active: selectedCustomer.active ? true : false}))
 },[selectedCustomer]);
 
@@ -48,7 +60,21 @@ useEffect(() =>{
     }
 
     const handleClear = () =>{
-      setCustomer(customers => ({...customers, code: "", name: "", surname: "", email: "", telephone: "", mobile: "", balance: 0, active: true}))
+      setCustomer(customers => ({...customers, 
+        code: "", 
+        first_name: "", 
+        last_name: "",
+        company_name: "",
+        address: "",
+        city: "",
+        county: "",
+        state: "",
+        web: "", 
+        email: "", 
+        phone1: "", 
+        phone2: "", 
+        zip: 0, 
+        active: true}));
     }
 
   function handleSubmit(e){
@@ -71,6 +97,7 @@ useEffect(() =>{
           <Col></Col>
           <Col className='col-xl-10'>      
           <Form data-bs-theme="dark" onSubmit={handleSubmit}>
+
           <Container>
           <Row>
           <Col>
@@ -80,15 +107,15 @@ useEffect(() =>{
         </Form.Group>
           </Col>
           <Col>
-          <Form.Group className="mb-3" controlId="formBasicName" >
-          <Form.Label className='text-light'>Name</Form.Label>
-          <Form.Control type="text" name="name" placeholder="Enter Name" onChange={handleChange} value={customer.name}/>
+          <Form.Group className="mb-3" controlId="formBasicFirstName" >
+          <Form.Label className='text-light'>First Name</Form.Label>
+          <Form.Control type="text" name="first_name" placeholder="Enter First Name" onChange={handleChange} value={customer.first_name}/>
         </Form.Group>
           </Col>
           <Col>
-          <Form.Group className="mb-3" controlId="formBasicSurname" >
-          <Form.Label className='text-light'>Surname</Form.Label>
-          <Form.Control type="text" name="surname" placeholder="Enter Surname" onChange={handleChange} value={customer.surname}/>
+          <Form.Group className="mb-3" controlId="formBasicLastName" >
+          <Form.Label className='text-light'>Last Name</Form.Label>
+          <Form.Control type="text" name="last_name" placeholder="Enter Last Name" onChange={handleChange} value={customer.last_name}/>
         </Form.Group>
           </Col>
           <Col>
@@ -98,23 +125,66 @@ useEffect(() =>{
         </Form.Group>
           </Col>
           </Row>
+
           <Row>
+          <Col>
+          <Form.Group className="mb-3" controlId="formBasicCompany" >
+          <Form.Label className='text-light'>Company</Form.Label>
+          <Form.Control type="text" name="company_name" placeholder="Enter Company" onChange={handleChange} value={customer.company_name}/>
+        </Form.Group>
+          </Col>
           <Col>
           <Form.Group className="mb-3" controlId="formBasicTelephone" >
           <Form.Label className='text-light'>Telephone</Form.Label>
-          <Form.Control type="telephone" name="telephone" placeholder="Enter Telephone" onChange={handleChange} value={customer.telephone}/>
+          <Form.Control type="telephone" name="phone1" placeholder="Enter Telephone" onChange={handleChange} value={customer.phone1}/>
         </Form.Group>
           </Col>
           <Col>
           <Form.Group className="mb-3" controlId="formBasicMobile" >
           <Form.Label className='text-light'>Mobile</Form.Label>
-          <Form.Control type="telephone" name="mobile" placeholder="Enter Mobile" onChange={handleChange} value={customer.mobile}/>
+          <Form.Control type="telephone" name="phone2" placeholder="Enter Mobile" onChange={handleChange} value={customer.phone2}/>
         </Form.Group>
           </Col>
           <Col>
-          <Form.Group className="mb-3" controlId="formBasicBalance" >
-          <Form.Label className='text-light'>Balance</Form.Label>
-          <Form.Control type="number" name="balance" placeholder="Enter Balance" step=".01" onChange={handleChange} value={customer.balance}/>
+          <Form.Group className="mb-3" controlId="formBasicWeb" >
+          <Form.Label className='text-light'>Website</Form.Label>
+          <Form.Control type="text" name="web" placeholder="Enter Website" onChange={handleChange} value={customer.web}/>
+        </Form.Group>
+          </Col>
+          </Row>
+
+          <Row>
+          <Col>
+          <Form.Group className="mb-3" controlId="formBasicAddress" >
+          <Form.Label className='text-light'>Address</Form.Label>
+          <Form.Control type="text" name="address" placeholder="Enter Address" onChange={handleChange} value={customer.address}/>
+        </Form.Group>
+          </Col>
+          <Col>
+          <Form.Group className="mb-3" controlId="formBasicCity" >
+          <Form.Label className='text-light'>City</Form.Label>
+          <Form.Control type="text" name="city" placeholder="Enter City" onChange={handleChange} value={customer.city}/>
+        </Form.Group>
+          </Col>
+          <Col>
+          <Form.Group className="mb-3" controlId="formBasicCounty" >
+          <Form.Label className='text-light'>County</Form.Label>
+          <Form.Control type="text" name="county" placeholder="Enter County" onChange={handleChange} value={customer.county}/>
+        </Form.Group>
+          </Col>
+          <Col>
+          <Form.Group className="mb-3" controlId="formBasicZip" >
+          <Form.Label className='text-light'>Zip</Form.Label>
+          <Form.Control type="number" name="zip" placeholder="Enter Zip"  onChange={handleChange} value={customer.zip}/>
+        </Form.Group>
+          </Col>
+          </Row>
+
+          <Row>
+          <Col>
+          <Form.Group className="mb-3" controlId="formBasicState" >
+          <Form.Label className='text-light'>State</Form.Label>
+          <Form.Control type="text" name="state" placeholder="Enter State" onChange={handleChange} value={customer.state}/>
         </Form.Group>
           </Col>
           <Col>
@@ -127,16 +197,18 @@ useEffect(() =>{
         onChange={handleChange}
         checked={customer.active}/>
           </Col>
+          <Col></Col>
+          <Col></Col>
           </Row>
           </Container>
-        <Button variant="primary" onClick={handleAction}>
-          {customer.id === 0 ? "Add" : "Update"}
-        </Button>
-        <Button variant="secondary" onClick={handleClear} style={{marginLeft: 10}}>
-          Clear
-        </Button>
-      </Form>  
-</Col>
+          <Button variant="primary" onClick={handleAction}>
+            {customer.id === 0 ? "Add" : "Update"}
+          </Button>
+          <Button variant="secondary" onClick={handleClear} style={{marginLeft: 10}}>
+            Clear
+          </Button>
+          </Form>  
+          </Col>
           <Col></Col>
         </Row>
       </Container>
