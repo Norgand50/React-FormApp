@@ -47,8 +47,14 @@ export default function CustomerIndex({customers, handleEdit, handleDelete}){
             </tr>
           )}
         </tbody>
+
       </Table></Col>
           <Col></Col>
+        </Row>
+        <Row>
+        <Col></Col>
+        <Col> {customers.length === 0 ? <h2 style={{color: 'white'}}>No Records Found.</h2> : ""}</Col>
+        <Col></Col>
         </Row>
       </Container>
 );

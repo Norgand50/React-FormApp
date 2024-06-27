@@ -17,3 +17,27 @@
   .iconbtn:active {
     filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(164deg) brightness(95%) contrast(103%);
   }
+
+  .white_text {
+    color: white;
+  }
+
+  .section_info{
+    background-color: #37517e;
+  }
+
+  .section_light{
+    background-color: #f4f4f4;
+  }
+
+  .section_white{
+    background-color: white;
+  }
+
+  .animated {
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+  }
+
+  .text_center{
+    text-align: center;
+  }

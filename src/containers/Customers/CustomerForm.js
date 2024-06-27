@@ -40,7 +40,7 @@ useEffect(() =>{
     phone1: selectedCustomer.phone1 || "",
     phone2: selectedCustomer.phone2 || "",
     zip: selectedCustomer.zip || 0,
-    active: selectedCustomer.active ? true : false}))
+    active: selectedCustomer.active}))
 },[selectedCustomer]);
 
 
