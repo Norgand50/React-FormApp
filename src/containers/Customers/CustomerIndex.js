@@ -17,10 +17,10 @@ export default function CustomerIndex({customers, handleEdit, handleDelete}){
           <Col><h1 style={{textAlign: 'center', color: 'white'}}>Customers</h1></Col>
           <Col></Col>
         </Row>
-        <Row>
-          <Col></Col>
-          <Col className='col-xl-10'>    
-          <Table striped bordered hover data-bs-theme="dark">
+        <Row className="justify-content-md-center">
+          {/* className='col-xl-10' */}
+          <Col md="auto" >    
+          <Table striped bordered hover data-bs-theme="dark" size="sm" responsive>
         <thead>
           <tr>
             <th>#</th>
@@ -49,7 +49,6 @@ export default function CustomerIndex({customers, handleEdit, handleDelete}){
         </tbody>
 
       </Table></Col>
-          <Col></Col>
         </Row>
         <Row>
         <Col></Col>

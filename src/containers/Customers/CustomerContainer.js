@@ -21,7 +21,7 @@ export default function CustomerContainer(){
 
 
     function LoadDataFromServer(){
-        axios.get('https://192.168.1.18:7186/api/Customers')
+        axios.get('https://192.168.1.20:7186/api/Customers')
         .then(response => {
             const responseData = response.data;
             setCustomers(responseData);
@@ -34,7 +34,7 @@ export default function CustomerContainer(){
     }
 
     function AddNewCustomerToServer(data){
-        axios.post('https://192.168.1.18:7186/api/Customers', data)
+        axios.post('https://192.168.1.20:7186/api/Customers', data)
           .then(function (response) {
             console.log(response);
             LoadDataFromServer();
@@ -47,7 +47,7 @@ export default function CustomerContainer(){
     }
 
     function UpdateCustomerToServer(data){
-        axios.put('https://192.168.1.18:7186/api/Customers/' + data.id, data)
+        axios.put('https://192.168.1.20:7186/api/Customers/' + data.id, data)
           .then(function (response) {
             console.log(response);
             LoadDataFromServer();
@@ -60,7 +60,7 @@ export default function CustomerContainer(){
     }
 
     function DeleteCustomerFromServer(id){
-        axios.delete('https://192.168.1.18:7186/api/Customers/' + id)
+        axios.delete('https://192.168.1.20:7186/api/Customers/' + id)
           .then(function (response) {
             console.log(response);
             LoadDataFromServer();
