@@ -5,6 +5,7 @@ import FormNavigator from '../Controllers/FormNavigator';
 //import {CustomersMetadata} from './CustomersMetadata.js';
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
+import {CustomersPath} from '../Controllers/ApiConnection';
 
 
 export default function CustomerContainer(){
@@ -21,7 +22,7 @@ export default function CustomerContainer(){
 
 
     function LoadDataFromServer(){
-        axios.get('https://192.168.1.20:7186/api/Customers')
+        axios.get(CustomersPath())
         .then(response => {
             const responseData = response.data;
             setCustomers(responseData);
@@ -31,10 +32,11 @@ export default function CustomerContainer(){
             setErrorMessage(error.message);
             setShowAlert(true);
         });
+        
     }
 
     function AddNewCustomerToServer(data){
-        axios.post('https://192.168.1.20:7186/api/Customers', data)
+        axios.post(CustomersPath(), data)
           .then(function (response) {
             console.log(response);
             LoadDataFromServer();
@@ -47,7 +49,7 @@ export default function CustomerContainer(){
     }
 
     function UpdateCustomerToServer(data){
-        axios.put('https://192.168.1.20:7186/api/Customers/' + data.id, data)
+        axios.put(CustomersPath() + '/' + data.id, data)
           .then(function (response) {
             console.log(response);
             LoadDataFromServer();
@@ -60,7 +62,7 @@ export default function CustomerContainer(){
     }
 
     function DeleteCustomerFromServer(id){
-        axios.delete('https://192.168.1.20:7186/api/Customers/' + id)
+        axios.delete(CustomersPath() + '/' + id)
           .then(function (response) {
             console.log(response);
             LoadDataFromServer();

@@ -26,15 +26,19 @@ export default function Navigation({activePage, handlePageTransition}){
           <Nav className="me-auto">
           <Nav.Link onClick={handlePageTransition} valuekey='home' active={activePage === 'home'}>Home</Nav.Link>
           <Nav.Link onClick={handlePageTransition} valuekey='customers' active={activePage === 'customers'}>Customers</Nav.Link>
-            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown title="Inventory Managment" id="collapsible-nav-dropdown" active={(activePage === 'products' || activePage === 'brands' || activePage === 'colors' || activePage === 'categories' || activePage === 'subCategories')}>
+              <NavDropdown.Item onClick={handlePageTransition} valuekey='products'>Products</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item onClick={handlePageTransition} valuekey='brands' >
+              Brands
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={handlePageTransition} valuekey='colors'>Colors</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={handlePageTransition} valuekey='categories'>
+                Categories
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={handlePageTransition} valuekey='subCategories'>
+                Sub Categories
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

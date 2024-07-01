@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import CustomerContainer from './Customers/CustomerContainer';
 import Navigation from './Controllers/Navigation';
 import Home from './Home/Home'
-
+import NoContent from './NoContent';
+import Brands from './Inventory/Brands';
 
 
 export default function MainContainer(){
@@ -10,7 +11,7 @@ export default function MainContainer(){
 
     const handlePageTransition = (e) => {
         const targetPage = e.target.getAttribute("valuekey");
-        console.log(targetPage);
+        //console.log(targetPage);
         setActivePageId(targetPage);
     }
 
@@ -23,6 +24,21 @@ export default function MainContainer(){
         case 'customers':
             activePage = <CustomerContainer />;
             break;
+        case 'products':
+            activePage = <NoContent/>;
+            break;
+            case 'brands':
+                activePage = <Brands/>;
+                break;
+                case 'colors':
+                    activePage = <NoContent/>;
+                    break;
+                    case 'categories':
+                        activePage = <NoContent/>;
+                        break;
+                        case 'subCategories':
+                            activePage = <NoContent/>;
+                            break;
         default:
             activePage = <Home/>;
     }
