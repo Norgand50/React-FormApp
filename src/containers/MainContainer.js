@@ -4,6 +4,9 @@ import Navigation from './Controllers/Navigation';
 import Home from './Home/Home'
 import NoContent from './NoContent';
 import Brands from './Inventory/Brands';
+import Colors from './Inventory/Colors';
+import Categories from './Inventory/Categories';
+import SubCategories from './Inventory/SubCategories';
 
 
 export default function MainContainer(){
@@ -31,13 +34,13 @@ export default function MainContainer(){
                 activePage = <Brands/>;
                 break;
                 case 'colors':
-                    activePage = <NoContent/>;
+                    activePage = <Colors/>;
                     break;
                     case 'categories':
-                        activePage = <NoContent/>;
+                        activePage = <Categories/>;
                         break;
                         case 'subCategories':
-                            activePage = <NoContent/>;
+                            activePage = <SubCategories/>;
                             break;
         default:
             activePage = <Home/>;

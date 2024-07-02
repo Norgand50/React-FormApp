@@ -179,7 +179,7 @@ export default function Brands(){
         <Modal.Body>
         <Form data-bs-theme="dark"> 
         <Form.Group className="mb-3" controlId="formBasicCode" >
-          <Form.Label className='text-light'>Code</Form.Label>
+          <Form.Label className='text-light'>Brand Name</Form.Label>
           <Form.Control type="text" name="brand_name" placeholder="Enter Code" onChange={handleChange} value={selectedBrand.brand_name} required/>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicActive" >
